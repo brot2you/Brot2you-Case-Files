@@ -1,22 +1,516 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>CASE FILES — Logic Grids V7</title><style>
-:root{--paper:#f5e5c1;--ink:#322418;--gold:#edc986;--wood:#20140d;--nav:#151819;--yes:#246644;--no:#ad372f}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 15% 15%,#764724 0,transparent 28%),repeating-linear-gradient(92deg,#1a110c 0 44px,#24170e 44px 90px);font:16px/1.55 Georgia,serif;color:#f8e9ce}button{font:inherit;cursor:pointer;touch-action:manipulation}button:focus-visible,select:focus-visible{outline:3px solid #f9d272;outline-offset:3px}.shell{max-width:1180px;margin:auto;padding:12px 14px 60px}.head{border:1px solid #b99b65;border-radius:14px;background:linear-gradient(#202523,#111615);padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}.head strong{font-size:clamp(22px,4vw,35px);color:var(--gold);letter-spacing:1px}.head small{display:block;font:12px system-ui;color:#e5d4b7}.pill{min-height:44px;border:1px solid #bd9c60;border-radius:10px;padding:9px 15px;background:#2a4f40;color:#fef5df}.paper{background:linear-gradient(125deg,#f9edcf,#e5cc9f);border:3px solid #bc9560;border-radius:16px;box-shadow:0 12px 20px #0007;color:var(--ink);padding:18px}.paper h2{font-size:clamp(22px,4vw,34px);line-height:1.2;margin:4px 0 10px}.hero{margin:20px 0;padding:28px;display:grid;grid-template-columns:1.4fr .6fr;align-items:center;gap:16px;background:radial-gradient(circle at 80% 40%,#895f34,#302014 60%);border:1px solid #b58a52;border-radius:16px}.hero h1{color:#ffe6b0;font-size:clamp(30px,5vw,55px);line-height:1;margin:12px 0}.hero figure{font-size:92px;margin:0;text-align:center}.layout{display:grid;grid-template-columns:1fr 310px;gap:16px;margin-top:16px}.casebuttons{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.casebtn{min-height:92px;color:#332317;background:linear-gradient(#fff0ce,#e8cda0);border:3px solid #ae844c;border-radius:12px;padding:12px;text-align:left}.casebtn b{display:block}.casebtn small{color:#715033}.casebtn:hover,.casebtn:focus-visible{background:#fff7de}.casebtn.current{border-color:#236248;box-shadow:0 0 0 2px #e6cb87}.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:16px 0}.tools button{min-height:44px;border:1px solid #ba9659;border-radius:10px;padding:9px 13px;background:#f1dfb9;color:#332318}.tools button.active{background:#21553f;color:white}.clue-list{padding-left:24px}.clue-list li{margin-bottom:10px}.grid-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:2px solid #bd9760;border-radius:12px;background:#fef4dd;padding:8px;margin:12px 0}.logic{border-collapse:collapse;width:100%;min-width:390px;table-layout:fixed;font:14px/1.2 system-ui,sans-serif}.logic th,.logic td{border:1px solid #bda070;text-align:center}.logic th{background:#d8bc8a;padding:9px 3px;font-size:12px}.logic th:first-child{width:116px}.logic .row{background:#edddb7;font-weight:700;text-align:left;padding:7px 6px}.logic td{padding:0;background:#fffaf0}.cell{display:block;width:100%;min-height:50px;background:transparent;border:0;font-size:24px;font-weight:bold;color:#382719}.cell.yes{background:#d9edd7;color:var(--yes)}.cell.no{background:#f8d7d2;color:var(--no)}.aside{position:sticky;top:14px;align-self:start}.aside h3{margin:0}.note{padding:12px;border-left:4px solid #977044;background:#fff8e7;margin:14px 0}.feedback{font-weight:bold;white-space:pre-wrap}.count{font:13px system-ui;color:#7a5733}.cardbar{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}.hidden{display:none!important}@media(max-width:800px){.layout,.hero{grid-template-columns:1fr}.hero figure{display:none}.casebuttons{grid-template-columns:repeat(2,1fr)}.aside{position:static}}@media(max-width:430px){.shell{padding:8px 8px 30px}.casebuttons{grid-template-columns:1fr 1fr}.head{padding:10px}.paper{padding:12px}.casebtn{padding:8px}.logic{min-width:370px}.logic th:first-child{width:100px}}
-</style></head><body><div class="shell"><header class="head"><div><strong>⌕ CASE FILES</strong><small>Read clues · Complete the logic grids · Deduce</small></div><button id="homeBtn" class="pill">⌂ Cases</button></header>
-<section id="home"><div class="hero"><div><small>DETECTIVE'S DESK · V7</small><h1>15 logic mysteries.<br>One clear mission.</h1><p>Read the story, cross out impossible answers, place your ✓ and solve the case.</p><button id="startBtn" class="pill">OPEN CASE 1 →</button></div><figure aria-hidden="true">📜🔎</figure></div><div class="paper"><h2>Choose a case</h2><p class="count">The cases below are newly created playable logic puzzles, not a recovered copy of your 15 original scenarios.</p><div class="casebuttons" id="cases"></div></div></section>
-<section id="play" class="hidden"><div class="layout"><main class="paper"><div class="cardbar"><div><span class="count" id="caseMeta"></span><h2 id="title"></h2></div><button id="backBtn" class="pill">← All cases</button></div><p id="story"></p><div class="tools"><button id="listenStory">🔊 Read story</button><button id="listenClues">🔊 Read clues</button></div><h3>📜 Clues</h3><ol id="clues" class="clue-list"></ol><h3>🧩 Logic grid — Suspects × Places</h3><p>Tap a square: <b>blank → ✓ → ✗ → blank</b>. Match each suspect to exactly one place.</p><div class="grid-wrap" id="gridA"></div><h3>🧩 Logic grid — Suspects × Times</h3><div class="grid-wrap" id="gridB"></div><div class="tools"><button id="check" class="pill">✓ Check Solution</button><button id="reset">↺ Reset both grids</button><button id="reveal">Reveal Answer</button></div><div id="feedback" class="note feedback" role="status" aria-live="polite">Start by eliminating impossible combinations with ✗.</div></main><aside class="paper aside"><h3>Detective's checklist</h3><p>① Read the mystery<br>② Compare the clues<br>③ Fill in BOTH grids<br>④ Check your deduction</p><div class="note"><strong>Remember:</strong> Every suspect has one place and one time. Every place and every time belongs to one suspect.</div><p class="count" id="progress"></p><button id="next" class="pill">Next case →</button></aside></div></section></div><script>
-(()=>{'use strict';
-const titles=['The Missing Necklace','The Library Secret','The Vanishing Laptop','The Garden Clue','The Broken Trophy','The Mystery Parcel','The Secret Note','The Lost Ticket','The Art Room Mystery','The Missing Map','The Science Lab Clue','The School Fair Mystery','The Forgotten Key','The Disappearing Costume','The Final Detective Test'];
-const people=['Emma','Liam','Noah'];const places=['Library','Garden','Art Room'];const times=['2:00','2:30','3:00'];
-const P=[[1,2,0],[0,2,1],[2,0,1],[1,0,2],[2,1,0],[0,1,2],[1,2,0],[2,0,1],[0,2,1],[2,1,0],[1,0,2],[0,1,2],[1,2,0],[2,0,1],[0,2,1]];
-const T=[[2,0,1],[1,2,0],[0,2,1],[2,1,0],[1,0,2],[0,1,2],[2,0,1],[1,2,0],[0,2,1],[2,1,0],[1,0,2],[0,1,2],[2,0,1],[1,2,0],[0,2,1]];
-const $=id=>document.getElementById(id);let index=0,gridA,gridB;
-function key(){return 'casefiles_logic_v7_'+index}function load(){try{let d=JSON.parse(localStorage.getItem(key()));if(Array.isArray(d.a)&&Array.isArray(d.b)&&d.a.length===9&&d.b.length===9)return d}catch(e){}return{a:Array(9).fill(0),b:Array(9).fill(0)}}function save(){try{localStorage.setItem(key(),JSON.stringify({a:gridA,b:gridB}))}catch(e){}}
-function puzzle(){let loc=P[index],tm=T[index];return{title:titles[index],intro:'A mystery has interrupted the school day. Three students — Emma, Liam and Noah — were seen at three different places and at three different times. Use the clues to work out where and when each student was seen.',clues:[`${people[(index+1)%3]} was at the ${places[loc[(index+1)%3]]}.`,`${people[(index+2)%3]} was seen at ${times[tm[(index+2)%3]]}.`,`The person in the ${places[loc[index%3]]} was there at ${times[tm[index%3]]}.`,`The student at ${places[loc[(index+2)%3]]} arrived at ${times[tm[(index+2)%3]]}.`,`The person in the ${places[loc[(index+1)%3]]} was not there at ${times[(tm[(index+1)%3]+1)%3]}.`],a:loc,b:tm}}
-function renderGrid(where,which){let data=which==='a'?gridA:gridB;let cats=which==='a'?places:times;let html='<table class="logic"><thead><tr><th>Suspect</th>'+cats.map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>';people.forEach((name,r)=>{html+='<tr><th class="row" scope="row">'+name+'</th>';cats.forEach((cat,c)=>{let v=data[r*3+c];html+='<td><button type="button" class="cell '+(v===1?'yes':v===2?'no':'')+'" data-which="'+which+'" data-ix="'+(r*3+c)+'" aria-label="'+name+' × '+cat+': '+(v===1?'yes':v===2?'no':'empty')+'">'+(v===1?'✓':v===2?'✗':'·')+'</button></td>'});html+='</tr>'});$(where).innerHTML=html+'</tbody></table>'}
-function update(){renderGrid('gridA','a');renderGrid('gridB','b');$('progress').textContent='Marked cells: '+[...gridA,...gridB].filter(x=>x!==0).length+' / 18'}
-function open(i){index=i;let d=load();gridA=d.a;gridB=d.b;let p=puzzle();$('home').classList.add('hidden');$('play').classList.remove('hidden');$('caseMeta').textContent='CASE '+(i+1)+' / 15 · Deduction puzzle';$('title').textContent=p.title;$('story').textContent=p.intro;$('clues').innerHTML=p.clues.map(x=>'<li>'+x+'</li>').join('');$('feedback').textContent='Start by eliminating impossible combinations with ✗.';update();scrollTo(0,0)}
-function home(){$('play').classList.add('hidden');$('home').classList.remove('hidden');scrollTo(0,0)}$('cases').innerHTML=titles.map((t,i)=>'<button class="casebtn" data-case="'+i+'"><small>CASE '+(i+1)+'</small><b>'+t+'</b><small>Two interactive deduction grids →</small></button>').join('');
-document.addEventListener('click',e=>{let b=e.target.closest('button');if(!b)return;if(b.dataset.case!==undefined){open(Number(b.dataset.case));return}if(b.dataset.which){let g=b.dataset.which==='a'?gridA:gridB,k=Number(b.dataset.ix);g[k]=(g[k]+1)%3;save();update();return}});
-$('startBtn').onclick=()=>open(0);$('backBtn').onclick=home;$('homeBtn').onclick=home;$('next').onclick=()=>open((index+1)%15);$('reset').onclick=()=>{gridA.fill(0);gridB.fill(0);save();update();$('feedback').textContent='Both grids have been reset.'};$('reveal').onclick=()=>{let p=puzzle();gridA=Array.from({length:9},(_,k)=>Math.floor(k/3)===p.a.indexOf(k%3)?1:2);gridB=Array.from({length:9},(_,k)=>Math.floor(k/3)===p.b.indexOf(k%3)?1:2);save();update();$('feedback').textContent='Answer revealed. Study the completed grids to understand the deduction.'};$('check').onclick=()=>{let p=puzzle(),ok=true;for(let r=0;r<3;r++)for(let c=0;c<3;c++){let v=r*3+c;if(gridA[v]!== (p.a[r]===c?1:2)||gridB[v]!==(p.b[r]===c?1:2))ok=false}$('feedback').textContent=ok?'✅ CASE SOLVED! Every ✓ and ✗ is correct. Excellent deduction!':'Not yet! Both grids must be fully and correctly completed. Each row and column contains one ✓; the rest are ✗.'};
-function speak(t){if(!('speechSynthesis' in window))return;window.speechSynthesis.cancel();let a=new SpeechSynthesisUtterance(t);a.lang='en-GB';a.rate=.88;window.speechSynthesis.speak(a)}$('listenStory').onclick=()=>speak(puzzle().intro);$('listenClues').onclick=()=>speak(puzzle().clues.join('. '));
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CASE FILES — Illustrated Logic Grids</title>
+<style>
+:root{
+  --bg:#140d0a;
+  --bg2:#21140e;
+  --paper:#f8ebcd;
+  --paper2:#ecd6aa;
+  --ink:#312216;
+  --gold:#efcb84;
+  --gold2:#b98948;
+  --wood:#3b2418;
+  --wood2:#5b3925;
+  --olive:#294638;
+  --olive2:#183127;
+  --yes:#246644;
+  --no:#ad372f;
+  --line:#b9955d;
+  --cream:#fff8eb;
+  --shadow:0 16px 34px rgba(0,0,0,.34);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  min-height:100vh;
+  color:#faefd9;
+  font:16px/1.6 Georgia, serif;
+  background:
+    linear-gradient(rgba(15,9,7,.82),rgba(19,12,9,.93)),
+    url('assets/home-hero.png') center top / cover fixed no-repeat;
+}
+img{max-width:100%;display:block}
+button{font:inherit;cursor:pointer;touch-action:manipulation}
+button:focus-visible, select:focus-visible{outline:3px solid #ffe19b;outline-offset:3px}
+.app{max-width:1280px;margin:0 auto;padding:14px 14px 52px}
+.header{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  padding:12px 16px;border:1px solid rgba(239,203,132,.36);border-radius:18px;
+  background:linear-gradient(180deg,rgba(24,24,25,.95),rgba(14,14,15,.92));
+  box-shadow:var(--shadow);backdrop-filter:blur(8px);
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{
+  width:48px;height:48px;border-radius:14px;
+  background:linear-gradient(145deg,#f6e7c1,#cf9e55);color:#27190f;
+  display:grid;place-items:center;font-size:24px;border:2px solid #604026
+}
+.brand strong{display:block;color:var(--gold);font-size:clamp(24px,3.5vw,38px);letter-spacing:1px;line-height:1}
+.brand small{display:block;font:12px/1.35 system-ui,sans-serif;color:#e5d5b7}
+.nav-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn,.pill,.ghost,.case-btn,.mini-btn{
+  min-height:44px;border-radius:12px;border:1px solid rgba(239,203,132,.36);
+  padding:10px 15px;color:#fff6e7;box-shadow:0 3px 8px rgba(0,0,0,.15)
+}
+.btn,.pill{background:linear-gradient(180deg,#2f6851,#1d3f33)}
+.ghost{background:linear-gradient(180deg,#4c3524,#2e1d13)}
+.mini-btn{background:linear-gradient(180deg,#f8ebcc,#ead1a0);color:#352316;border-color:#ba975f}
+.page{display:none}
+.page.active{display:block}
+.hero{
+  margin:18px 0 22px;
+  display:grid;grid-template-columns:1.08fr .92fr;gap:18px;
+  border:1px solid rgba(239,203,132,.32);border-radius:28px;overflow:hidden;
+  background:linear-gradient(135deg,rgba(29,18,13,.96),rgba(62,39,22,.95) 45%,rgba(24,18,15,.93));
+  box-shadow:var(--shadow)
+}
+.hero-copy{padding:28px 26px 24px}
+.kicker{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#0000003d;border:1px solid rgba(239,203,132,.28);color:#f1d7a0;font:12px/1.2 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em}
+.hero-copy h1{margin:18px 0 10px;font-size:clamp(2.4rem,5vw,4.8rem);line-height:.95;color:#fce7b6}
+.hero-copy p{max-width:720px;color:#ebd9b5;font-size:1.02rem}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.hero-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:22px}
+.stat{padding:14px;border-radius:16px;background:rgba(255,248,235,.08);border:1px solid rgba(239,203,132,.2)}
+.stat strong{display:block;color:#ffe8b7;font-size:1.35rem}
+.stat span{display:block;color:#dbc8a4;font-size:.92rem}
+.hero-art{min-height:340px;background:url('assets/home-hero.png') center center / cover no-repeat;position:relative}
+.hero-art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,16,12,.08),rgba(25,16,12,.18))}
+.paper, .sidebar-card, .case-card, .play-shell{background:linear-gradient(145deg,var(--paper),var(--paper2));color:var(--ink);border:3px solid #bd9760;border-radius:22px;box-shadow:var(--shadow)}
+.paper{padding:18px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin:18px 0 12px}
+.section-head h2{margin:0;color:#f6dfae;font-size:2rem}
+.section-head p{margin:4px 0 0;color:#d4c09d}
+.home-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.feature{padding:16px 16px 14px;border-radius:18px;background:linear-gradient(145deg,#fbf0d8,#edd7ab);border:2px solid #c3a06d;color:#302114}
+.feature h3{margin:0 0 8px;font-size:1.16rem}
+.feature p{margin:.35rem 0 0}
+.feature .emoji{font-size:1.45rem;margin-right:8px}
+.case-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.case-card{overflow:hidden}
+.case-thumb{height:170px;background:#74503b center center / cover no-repeat;position:relative}
+.case-thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(19,12,8,.35) 80%)}
+.case-body{padding:15px}
+.case-body small{display:block;color:#7d5d39;font:12px/1.25 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.06em}
+.case-body h3{margin:6px 0 8px;font-size:1.3rem}
+.case-body p{margin:.4rem 0 .9rem;min-height:56px}
+.case-btn{width:100%;background:linear-gradient(180deg,#2c644f,#1d4033)}
+.play-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:18px}
+.play-shell{padding:18px}
+.story-header{display:grid;grid-template-columns:1.08fr .92fr;gap:16px;align-items:start;margin-bottom:16px}
+.story-copy .meta{font:12px/1.25 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:#7a5a35}
+.story-copy h2{margin:4px 0 10px;font-size:2.2rem;line-height:1.08}
+.story-copy p{margin:.35rem 0;color:#322317}
+.story-art{border-radius:18px;overflow:hidden;min-height:280px;background:#68422b;box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.story-art img{width:100%;height:100%;object-fit:cover}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:12px 0 4px}
+.tools .mini-btn.active{background:#234f3e;color:#fff8eb}
+.subpaper{margin-top:14px;padding:14px;border-radius:18px;background:#fff7e8;border:1px solid #d5b784}
+.subpaper h3{margin:0 0 8px;font-size:1.2rem}
+.clue-list{padding-left:1.2rem;margin:.25rem 0 0}
+.clue-list li{margin-bottom:10px}
+.grid-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:2px solid #c09a61;border-radius:16px;background:#fff9ee;padding:8px;margin:12px 0}
+.logic{border-collapse:collapse;width:100%;min-width:410px;table-layout:fixed;font:14px/1.2 system-ui,sans-serif}
+.logic th,.logic td{border:1px solid #c3a57a;text-align:center}
+.logic th{background:#e1c595;padding:10px 4px;font-size:12px}
+.logic th:first-child{width:124px}
+.logic .row{background:#f2e1bd;font-weight:700;text-align:left;padding:8px 7px}
+.logic td{padding:0;background:#fffdf8}
+.cell{display:block;width:100%;min-height:54px;border:0;background:transparent;font-size:24px;font-weight:bold;color:#3a281c}
+.cell.yes{background:#d9edd7;color:var(--yes)}
+.cell.no{background:#f8d7d2;color:var(--no)}
+.sidebar{display:grid;gap:14px}
+.sidebar-card{padding:15px}
+.sidebar-card h3{margin:0 0 8px;font-size:1.15rem}
+.sidebar-card p,.sidebar-card li{margin:.35rem 0}
+.sidebar-card ul{padding-left:1.1rem}
+.icon-sheet{border-radius:16px;overflow:hidden;border:2px solid #c39b63;background:#fff6e5}
+.icon-sheet img{width:100%;height:auto}
+.badge{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;background:#fff3d5;border:1px solid #d3b278;color:#5c4025;font:13px/1.2 system-ui,sans-serif}
+.feedback{font-weight:bold;white-space:pre-wrap;padding:12px 14px;border-left:4px solid #a07644;background:#fff8e7;margin-top:14px;border-radius:10px}
+.count{font:13px system-ui,sans-serif;color:#7a5733}
+.footer-note{text-align:center;color:#d8c4a0;font-size:.92rem;margin-top:22px}
+.hidden{display:none !important}
+@media (max-width:1050px){
+  .hero,.story-header,.play-layout{grid-template-columns:1fr}
+  .case-grid,.home-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:680px){
+  .app{padding:10px 10px 34px}
+  .header{padding:10px 12px}
+  .hero-copy{padding:18px 16px 20px}
+  .hero-art{min-height:260px}
+  .hero-copy h1{font-size:2.2rem}
+  .hero-stats,.case-grid,.home-grid{grid-template-columns:1fr}
+  .story-copy h2{font-size:1.8rem}
+  .logic{min-width:385px}
+  .logic th:first-child{width:108px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="header">
+    <div class="brand">
+      <div class="brand-mark">🕵️</div>
+      <div>
+        <strong>CASE FILES</strong>
+        <small>Illustrated English Mysteries · Logic Grids · Detective Desk Edition</small>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <button class="ghost" id="homeBtnTop">Home</button>
+      <button class="btn" id="casesBtnTop">Cases</button>
+    </div>
+  </header>
+
+  <section id="homePage" class="page active">
+    <div class="hero">
+      <div class="hero-copy">
+        <div class="kicker">Detective's Desk · illustrated edition</div>
+        <h1>Solve mysteries<br>with logic.</h1>
+        <p>A clearer, prettier version of CASE FILES: beautiful story illustrations, a warm detective atmosphere, readable deduction grids, and all the gameplay centred on checking clues and filling in ✓ / ✗ tables.</p>
+        <div class="hero-actions">
+          <button class="btn" id="openFirstCase">Open Case 1</button>
+          <button class="ghost" id="jumpToCases">Browse all cases</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong>15</strong><span>logic mysteries</span></div>
+          <div class="stat"><strong>2</strong><span>grids per case</span></div>
+          <div class="stat"><strong>✓ ✗</strong><span>deduction first</span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true"></div>
+    </div>
+
+    <div class="section-head">
+      <div>
+        <h2>What pupils do</h2>
+        <p>Simple progression: read, compare clues, deduce, check.</p>
+      </div>
+    </div>
+    <div class="home-grid">
+      <div class="feature"><h3><span class="emoji">📖</span>Read the story</h3><p>Each case now includes a large illustration to set the scene and make the mystery more inviting.</p></div>
+      <div class="feature"><h3><span class="emoji">🔎</span>Study the clues</h3><p>Clues stay central, displayed clearly on parchment-style panels with optional audio reading.</p></div>
+      <div class="feature"><h3><span class="emoji">🧩</span>Fill in the grids</h3><p>Interactive logic tables remain the heart of the game. Tap blank → ✓ → ✗ → blank.</p></div>
+    </div>
+
+    <div class="section-head" id="casesAnchor">
+      <div>
+        <h2>Case library</h2>
+        <p>Illustrated cards for the 15 logic puzzles.</p>
+      </div>
+    </div>
+    <div class="case-grid" id="caseGrid"></div>
+  </section>
+
+  <section id="playPage" class="page">
+    <div class="play-layout">
+      <main class="play-shell">
+        <div class="story-header">
+          <div class="story-copy">
+            <div class="meta" id="caseMeta">Case 1 / 15</div>
+            <h2 id="caseTitle">The Missing Necklace</h2>
+            <p id="caseHook"></p>
+            <p id="caseStory"></p>
+            <div class="tools">
+              <button class="mini-btn" id="backBtn">← All cases</button>
+              <button class="mini-btn" id="listenStory">🔊 Read story</button>
+              <button class="mini-btn" id="listenClues">🔊 Read clues</button>
+            </div>
+          </div>
+          <div class="story-art"><img id="storyImage" src="assets/missing-necklace.png" alt="Story illustration"></div>
+        </div>
+
+        <div class="subpaper">
+          <h3>📜 Clues</h3>
+          <ol id="clues" class="clue-list"></ol>
+        </div>
+
+        <div class="subpaper">
+          <h3>🧩 Logic grid — Suspects × Places</h3>
+          <p>Tap a square: <b>blank → ✓ → ✗ → blank</b>. Match each suspect to exactly one place.</p>
+          <div class="grid-wrap" id="gridA"></div>
+        </div>
+
+        <div class="subpaper">
+          <h3>🧩 Logic grid — Suspects × Times</h3>
+          <p>Use the second grid to identify when each suspect was seen.</p>
+          <div class="grid-wrap" id="gridB"></div>
+        </div>
+
+        <div class="tools">
+          <button id="checkBtn" class="btn">✓ Check Solution</button>
+          <button id="resetBtn" class="mini-btn">↺ Reset both grids</button>
+          <button id="revealBtn" class="ghost">Reveal Answer</button>
+        </div>
+        <div id="feedback" class="feedback" role="status" aria-live="polite">Start by eliminating impossible combinations with ✗.</div>
+      </main>
+
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <h3>Detective checklist</h3>
+          <ul>
+            <li>Read the mystery</li>
+            <li>Compare the clues</li>
+            <li>Fill both grids</li>
+            <li>Check your deduction</li>
+          </ul>
+          <p class="count" id="progressText">Marked cells: 0 / 18</p>
+          <button id="nextBtn" class="btn" style="width:100%;margin-top:8px">Next case →</button>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Story illustration</h3>
+          <p id="imageCaption"></p>
+          <span class="badge" id="caseBadge">Warm campus mystery</span>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Detective toolkit</h3>
+          <p>Extra themed visuals for the app interface.</p>
+          <div class="icon-sheet"><img src="assets/detective-icons.png" alt="Detective themed icon sheet"></div>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Evidence board mood</h3>
+          <img src="assets/evidence-board.png" alt="Detective evidence board illustration" style="border-radius:14px;border:2px solid #c69e63">
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <p class="footer-note">Illustrated Detective Desk update · playable logic grids preserved</p>
+</div>
+
+<script>
+(() => {
+  'use strict';
+
+  const titles = [
+    'The Missing Necklace','The Library Secret','The Vanishing Laptop','The Garden Clue','The Broken Trophy',
+    'The Mystery Parcel','The Secret Note','The Lost Ticket','The Art Room Mystery','The Missing Map',
+    'The Science Lab Clue','The School Fair Mystery','The Forgotten Key','The Disappearing Costume','The Final Detective Test'
+  ];
+  const hooks = [
+    'A precious necklace has vanished just before a school exhibition opens.',
+    'A rare book disappears from the library and everyone has a different version of events.',
+    'A laptop is gone and the timetable seems to hide the answer.',
+    'Footprints, flowers and a gate suggest something happened in the garden.',
+    'A trophy is broken and the suspects all claim they were somewhere else.',
+    'A mysterious parcel arrives and then goes missing before anyone can open it.',
+    'A handwritten note changes hands and creates confusion across the campus.',
+    'An important ticket has vanished just before a trip.',
+    'Paint, paper and timing clues turn the art room into a puzzle.',
+    'A map needed for a project cannot be found anywhere.',
+    'A clue from the science lab points to careful observation and deduction.',
+    'The school fair becomes the scene of a puzzling little mystery.',
+    'A missing key creates suspicion among three possible culprits.',
+    'A costume disappears backstage shortly before the performance.',
+    'The final test brings together everything a good detective should know.'
+  ];
+  const storyTexts = [
+    'Three students — Emma, Liam and Noah — were seen in three different places and at three different times. Read the clues carefully to work out who was where and when.',
+    'During a busy afternoon, the school library became the centre of a mystery. Use logic, not guesswork, to reconstruct the truth.',
+    'Somebody misplaced or hid an important object, and the only way to solve the case is to combine the clues with the two logic grids.',
+    'Every case follows the same mission: compare the evidence, cross out impossible options, and identify one correct place and one correct time for each suspect.'
+  ];
+  const images = [
+    {src:'assets/missing-necklace.png', caption:'The detective examines the scene of the missing necklace.', badge:'Museum / jewel mystery'},
+    {src:'assets/library-secret.png', caption:'A library investigation brings clues hidden in books and quiet corners.', badge:'Library mystery'},
+    {src:'assets/garden-gate.png', caption:'The garden gate and footprints suggest a clue outdoors.', badge:'Garden clue'},
+    {src:'assets/gothic-manor.png', caption:'A darker, more atmospheric mystery for dramatic cases.', badge:'Gothic atmosphere'},
+    {src:'assets/home-hero.png', caption:'The main detective desk scene gives the game its warm visual identity.', badge:'Detective desk'}
+  ];
+  const people=['Emma','Liam','Noah'];
+  const places=['Library','Garden','Art Room'];
+  const times=['2:00','2:30','3:00'];
+  const P=[[1,2,0],[0,2,1],[2,0,1],[1,0,2],[2,1,0],[0,1,2],[1,2,0],[2,0,1],[0,2,1],[2,1,0],[1,0,2],[0,1,2],[1,2,0],[2,0,1],[0,2,1]];
+  const T=[[2,0,1],[1,2,0],[0,2,1],[2,1,0],[1,0,2],[0,1,2],[2,0,1],[1,2,0],[0,2,1],[2,1,0],[1,0,2],[0,1,2],[2,0,1],[1,2,0],[0,2,1]];
+
+  let currentIndex = 0;
+  let gridA = Array(9).fill(0);
+  let gridB = Array(9).fill(0);
+
+  const $ = id => document.getElementById(id);
+  const homePage = $('homePage');
+  const playPage = $('playPage');
+
+  function storageKey(){ return 'casefiles_v8_' + currentIndex; }
+  function loadState(){
+    try{
+      const data = JSON.parse(localStorage.getItem(storageKey()));
+      if(Array.isArray(data?.a) && Array.isArray(data?.b) && data.a.length===9 && data.b.length===9){
+        gridA = data.a; gridB = data.b; return;
+      }
+    }catch(e){}
+    gridA = Array(9).fill(0); gridB = Array(9).fill(0);
+  }
+  function saveState(){
+    try{ localStorage.setItem(storageKey(), JSON.stringify({a:gridA,b:gridB})); }catch(e){}
+  }
+
+  function buildPuzzle(index){
+    const loc=P[index], tm=T[index];
+    return {
+      title: titles[index],
+      hook: hooks[index],
+      story: storyTexts[index % storyTexts.length],
+      clues: [
+        `${people[(index+1)%3]} was at the ${places[loc[(index+1)%3]]}.`,
+        `${people[(index+2)%3]} was seen at ${times[tm[(index+2)%3]]}.`,
+        `The person in the ${places[loc[index%3]]} was there at ${times[tm[index%3]]}.`,
+        `The student at ${places[loc[(index+2)%3]]} arrived at ${times[tm[(index+2)%3]]}.`,
+        `The person in the ${places[loc[(index+1)%3]]} was not there at ${times[(tm[(index+1)%3]+1)%3]}.`
+      ],
+      a: loc,
+      b: tm,
+      image: images[index % images.length]
+    };
+  }
+
+  function renderCaseCards(){
+    $('caseGrid').innerHTML = titles.map((title, i) => {
+      const img = images[i % images.length];
+      return `
+        <article class="case-card">
+          <div class="case-thumb" style="background-image:url('${img.src}')"></div>
+          <div class="case-body">
+            <small>Case ${i+1} · logic puzzle</small>
+            <h3>${title}</h3>
+            <p>${hooks[i]}</p>
+            <button class="case-btn" data-case="${i}">Open case →</button>
+          </div>
+        </article>`;
+    }).join('');
+  }
+
+  function renderGrid(targetId, data, cats, which){
+    let html = '<table class="logic"><thead><tr><th>Suspect</th>' + cats.map(cat => `<th>${cat}</th>`).join('') + '</tr></thead><tbody>';
+    people.forEach((name, r) => {
+      html += `<tr><th class="row" scope="row">${name}</th>`;
+      cats.forEach((cat, c) => {
+        const value = data[r*3+c];
+        html += `<td><button type="button" class="cell ${value===1?'yes':value===2?'no':''}" data-which="${which}" data-index="${r*3+c}" aria-label="${name} × ${cat}: ${value===1?'yes':value===2?'no':'empty'}">${value===1?'✓':value===2?'✗':'·'}</button></td>`;
+      });
+      html += '</tr>';
+    });
+    $(targetId).innerHTML = html + '</tbody></table>';
+  }
+
+  function updateProgress(){
+    $('progressText').textContent = 'Marked cells: ' + [...gridA, ...gridB].filter(v => v!==0).length + ' / 18';
+  }
+
+  function updatePlayView(){
+    const p = buildPuzzle(currentIndex);
+    $('caseMeta').textContent = `Case ${currentIndex+1} / 15 · illustrated deduction puzzle`;
+    $('caseTitle').textContent = p.title;
+    $('caseHook').textContent = p.hook;
+    $('caseStory').textContent = p.story;
+    $('clues').innerHTML = p.clues.map(clue => `<li>${clue}</li>`).join('');
+    $('storyImage').src = p.image.src;
+    $('storyImage').alt = p.title + ' illustration';
+    $('imageCaption').textContent = p.image.caption;
+    $('caseBadge').textContent = p.image.badge;
+    renderGrid('gridA', gridA, places, 'a');
+    renderGrid('gridB', gridB, times, 'b');
+    updateProgress();
+  }
+
+  function showHome(){
+    playPage.classList.remove('active');
+    homePage.classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function openCase(i){
+    currentIndex = i;
+    loadState();
+    updatePlayView();
+    $('feedback').textContent = 'Start by eliminating impossible combinations with ✗.';
+    homePage.classList.remove('active');
+    playPage.classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function cycleCell(which, idx){
+    const grid = which === 'a' ? gridA : gridB;
+    grid[idx] = (grid[idx] + 1) % 3;
+    saveState();
+    updatePlayView();
+  }
+
+  function revealAnswer(){
+    const p = buildPuzzle(currentIndex);
+    gridA = Array.from({length:9}, (_, k) => Math.floor(k/3) === p.a.indexOf(k%3) ? 1 : 2);
+    gridB = Array.from({length:9}, (_, k) => Math.floor(k/3) === p.b.indexOf(k%3) ? 1 : 2);
+    saveState();
+    updatePlayView();
+    $('feedback').textContent = 'Answer revealed. Study the completed grids to understand the deduction.';
+  }
+
+  function resetGrids(){
+    gridA.fill(0); gridB.fill(0);
+    saveState();
+    updatePlayView();
+    $('feedback').textContent = 'Both grids have been reset.';
+  }
+
+  function checkSolution(){
+    const p = buildPuzzle(currentIndex);
+    let ok = true;
+    for(let r=0;r<3;r++){
+      for(let c=0;c<3;c++){
+        const idx = r*3+c;
+        if(gridA[idx] !== (p.a[r]===c ? 1 : 2) || gridB[idx] !== (p.b[r]===c ? 1 : 2)) ok = false;
+      }
+    }
+    $('feedback').textContent = ok
+      ? '✅ CASE SOLVED! Every ✓ and ✗ is correct. Excellent deduction!'
+      : 'Not yet! Both grids must be fully and correctly completed. Each row and column contains one ✓; the rest are ✗.';
+  }
+
+  function speak(text){
+    if(!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = 'en-GB';
+    utter.rate = 0.9;
+    window.speechSynthesis.speak(utter);
+  }
+
+  document.addEventListener('click', (e) => {
+    const caseBtn = e.target.closest('[data-case]');
+    if(caseBtn){ openCase(Number(caseBtn.dataset.case)); return; }
+
+    const cellBtn = e.target.closest('[data-which][data-index]');
+    if(cellBtn){ cycleCell(cellBtn.dataset.which, Number(cellBtn.dataset.index)); return; }
+  });
+
+  $('openFirstCase').onclick = () => openCase(0);
+  $('jumpToCases').onclick = () => document.getElementById('casesAnchor').scrollIntoView({behavior:'smooth'});
+  $('backBtn').onclick = showHome;
+  $('homeBtnTop').onclick = showHome;
+  $('casesBtnTop').onclick = () => {
+    showHome();
+    setTimeout(() => document.getElementById('casesAnchor').scrollIntoView({behavior:'smooth'}), 100);
+  };
+  $('listenStory').onclick = () => {
+    const p = buildPuzzle(currentIndex);
+    speak(p.hook + '. ' + p.story);
+  };
+  $('listenClues').onclick = () => speak(buildPuzzle(currentIndex).clues.join('. '));
+  $('checkBtn').onclick = checkSolution;
+  $('resetBtn').onclick = resetGrids;
+  $('revealBtn').onclick = revealAnswer;
+  $('nextBtn').onclick = () => openCase((currentIndex + 1) % 15);
+
+  renderCaseCards();
 })();
-</script></body></html>
+</script>
+</body>
+</html>
