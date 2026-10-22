@@ -190,6 +190,14 @@ body{background:radial-gradient(ellipse at 12% -5%,#70503460,transparent 40%),li
 @media(max-width:1050px){.hero{grid-template-columns:48% 52%}.hero-copy{padding:35px 8px 28px 27px}.hero-art{min-height:350px}.story-header{grid-template-columns:1fr}}
 @media(max-width:680px){.app{padding:10px 10px 35px}.header{padding:9px 12px;gap:8px}.brand{gap:4px;min-width:0;flex:1}.brand-logo{height:40px;max-width:100%}.brand small{font-size:6.2px;letter-spacing:.65px;max-width:100%;padding-left:2px}.nav-actions{gap:6px}.icon-nav{width:48px;min-width:48px;height:48px}.hero{grid-template-columns:1fr;min-height:0}.hero-copy{padding:25px 21px 8px}.hero-copy h1{font-size:46px;margin:17px 0 12px}.hero-copy p{font-size:15px}.hero-art{min-height:300px;background-size:contain;background-position:center center;margin:0 14px 18px 14px;padding:18px}.hero-stats{margin:19px 0 4px;grid-template-columns:repeat(3,1fr)}.stat{padding:9px 6px}.stat strong{font-size:17px}.stat span{font-size:10px}.mission-ribbon{grid-template-columns:repeat(2,1fr);padding:14px;gap:12px}.mission-ribbon span{font-size:12px}.section-head h2{font-size:26px}.case-grid{grid-template-columns:1fr}.case-thumb{height:200px}.play-shell{padding:13px}.subpaper{padding:12px}.story-art{min-height:0;padding:8px}.story-art img{max-height:280px}.logic{min-width:385px}.sidebar{gap:10px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
+
+/* V14 - Navigation icons: larger, correctly centered */
+.header{align-items:center}
+.nav-actions{display:flex;align-items:center;justify-content:center;gap:16px;flex:0 0 auto;margin-block:auto}
+.nav-actions .icon-nav{width:82px;height:82px;min-width:82px;display:flex;align-items:center;justify-content:center}
+.nav-actions .icon-nav img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+@media(max-width:680px){.header{flex-wrap:nowrap;align-items:center}.brand{min-width:0;flex:1 1 auto}.brand-logo{width:100%;height:auto;max-height:49px;object-position:left center}.nav-actions{gap:7px;margin-left:auto;flex:0 0 auto}.nav-actions .icon-nav{width:59px;height:59px;min-width:59px}}
+@media(max-width:380px){.nav-actions .icon-nav{width:52px;height:52px;min-width:52px}}
 </style>
 </head>
 <body>
