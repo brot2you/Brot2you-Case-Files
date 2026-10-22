@@ -31,7 +31,7 @@ body{
   font:16px/1.6 Georgia, serif;
   background:
     linear-gradient(rgba(15,9,7,.82),rgba(19,12,9,.93)),
-    url('assets/home-hero.png') center top / cover fixed no-repeat;
+    url('assets/home-hero.webp') center top / cover fixed no-repeat;
 }
 img{max-width:100%;display:block}
 button{font:inherit;cursor:pointer;touch-action:manipulation}
@@ -79,7 +79,7 @@ button:focus-visible, select:focus-visible{outline:3px solid #ffe19b;outline-off
 .stat{padding:14px;border-radius:16px;background:rgba(255,248,235,.08);border:1px solid rgba(239,203,132,.2)}
 .stat strong{display:block;color:#ffe8b7;font-size:1.35rem}
 .stat span{display:block;color:#dbc8a4;font-size:.92rem}
-.hero-art{min-height:340px;background:url('assets/home-hero.png') center center / cover no-repeat;position:relative}
+.hero-art{min-height:340px;background:url('assets/home-hero.webp') center center / cover no-repeat;position:relative}
 .hero-art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,16,12,.08),rgba(25,16,12,.18))}
 .paper, .sidebar-card, .case-card, .play-shell{background:linear-gradient(145deg,var(--paper),var(--paper2));color:var(--ink);border:3px solid #bd9760;border-radius:22px;box-shadow:var(--shadow)}
 .paper{padding:18px}
@@ -153,6 +153,46 @@ button:focus-visible, select:focus-visible{outline:3px solid #ffe19b;outline-off
   .brand-mark{width:50px;height:50px}
   .icon-nav{width:50px;height:50px;min-width:50px}
 }
+
+/* Detective Desk — Premium finish */
+:root{--paper:#f9edd3;--paper2:#edd8b5;--gold:#e9bf79;--line:#c7a26d}
+body{background:radial-gradient(ellipse at 12% -5%,#70503460,transparent 40%),linear-gradient(180deg,#1b1210,#160f0d 65%,#24160f);font-family:Georgia,"Times New Roman",serif;letter-spacing:.005em}
+.app{max-width:1250px;padding:22px 22px 62px}
+.header{padding:11px 26px;border:1px solid #aa8252a0;border-radius:18px;background:linear-gradient(100deg,#14191bfa,#161512f5);box-shadow:0 16px 34px #0006,inset 0 1px #ffffff14;gap:22px}
+.brand{gap:18px}.brand-mark{width:69px;height:69px;flex:0 0 69px}.brand strong{font-size:clamp(27px,3.6vw,43px);letter-spacing:3px;color:#f7d99e;text-shadow:0 2px 12px #0009}.brand small{font-size:10px;letter-spacing:2px;color:#d6bea0;margin-top:5px;font-weight:600}
+.icon-nav{width:71px;height:71px;min-width:71px;filter:drop-shadow(0 5px 6px #0009);transition:transform .2s,filter .2s}
+.icon-nav:hover{transform:translateY(-3px) scale(1.05)}
+.hero{margin-top:23px;grid-template-columns:43% 57%;gap:0;min-height:445px;border:1px solid #b28b55;border-radius:23px;background:linear-gradient(145deg,#261a14,#382318 75%);box-shadow:0 24px 54px #0008}
+.hero-copy{padding:54px 14px 37px 40px;position:relative;z-index:1}
+.kicker{font-size:10px;letter-spacing:2px;border-color:#caa56b77;color:#efd3a1}
+.hero-copy h1{font-size:clamp(42px,5.3vw,73px);font-weight:600;letter-spacing:-1.5px;line-height:1.02;margin:25px 0 16px}
+.hero-copy p{font-size:17px;line-height:1.6;color:#edddbc;max-width:380px}
+.hero-art{background-image:url('assets/home-hero.webp');background-position:center center;background-size:contain;background-repeat:no-repeat;min-height:440px}
+.hero-art::after{background:none}
+.btn,.ghost,.case-btn{font-family:Georgia,serif;letter-spacing:.015em;font-weight:bold;border-radius:11px;transition:transform .15s,filter .15s,box-shadow .15s}
+.btn:hover,.ghost:hover,.case-btn:hover{transform:translateY(-2px);filter:brightness(1.12)}
+.hero-actions .btn,.hero-actions .ghost{min-height:51px;padding:12px 20px}
+.hero-stats{margin-top:26px;gap:6px}.stat{background:#21150fbb;border:1px solid #a2814c69;padding:12px 10px;border-radius:12px}.stat strong{font-size:21px}.stat span{font:11px/1.35 system-ui,sans-serif;letter-spacing:.03em}
+.mission-ribbon{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:27px 0 25px;padding:16px 18px;border:1px solid #b68d526e;border-radius:15px;background:#1f201dbb;box-shadow:0 8px 25px #0004}
+.mission-ribbon span{color:#ecdabb;font-size:14px;display:flex;gap:10px;align-items:center}.mission-ribbon b{color:#f2cc80;font:700 13px system-ui,sans-serif}
+.section-head{margin:28px 0 17px}.section-head h2{font-size:32px;letter-spacing:.02em}.section-head p{color:#c5ac88}
+.case-grid{gap:19px}.case-card{border:1px solid #ad8853;border-radius:17px;background:linear-gradient(140deg,#fcf0d5,#e9d0a8);overflow:hidden;box-shadow:0 14px 28px #0006;transition:transform .18s,box-shadow .18s}
+.case-card:hover{transform:translateY(-4px);box-shadow:0 19px 33px #0009}
+.case-thumb{height:187px;background-position:center 38%}
+.case-body{padding:18px 18px 20px}.case-body h3{font-size:22px;line-height:1.17}.case-body small{letter-spacing:.13em;font-weight:700}
+.case-body p{min-height:70px;color:#5c4836;line-height:1.45}
+.case-btn{min-height:48px;border-color:#9a784c;background:linear-gradient(180deg,#326851,#204838);box-shadow:inset 0 1px #ffffff44}
+.play-shell,.sidebar-card{border:1px solid #b99462;border-radius:16px;background:linear-gradient(140deg,#f8ecd0,#e9d4ad);box-shadow:0 15px 30px #0006}
+.play-shell{padding:24px}.story-header{gap:24px;grid-template-columns:1fr 42%;align-items:center}.story-copy h2{font-size:clamp(30px,3.5vw,44px);margin:8px 0 20px}.story-art{min-height:260px;border:5px solid #fff5df;border-radius:9px;box-shadow:0 9px 19px #3c271a5e}.story-art img{object-fit:contain;height:auto;max-height:360px;background:#6e432e}
+.subpaper{background:#fffaf0;border:1px solid #d5b78a;border-radius:12px;margin-top:19px;padding:20px}.subpaper h3{font-size:21px;margin-bottom:11px}
+.clue-list li{padding:5px 3px;line-height:1.65}
+.grid-wrap{background:#fffdf7;border:1px solid #c5a577;padding:10px}
+.logic th{background:#dec28d}.logic td{background:#fffdf8}.cell{min-height:56px}.cell:active{transform:scale(.97)}
+.sidebar-card{padding:20px}.sidebar-card h3{font-size:21px}.sidebar-card li{margin:10px 0}
+.feedback{font-weight:600}.footer-note{font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.7}
+@media(max-width:1050px){.hero{grid-template-columns:48% 52%}.hero-copy{padding:35px 8px 28px 27px}.hero-art{min-height:350px}.story-header{grid-template-columns:1fr}}
+@media(max-width:680px){.app{padding:10px 10px 35px}.header{padding:10px 12px;gap:8px}.brand{gap:9px;min-width:0;flex:1}.brand-mark{width:49px;height:49px;flex-basis:49px}.brand strong{font-size:clamp(19px,5.5vw,27px);letter-spacing:1.2px}.brand small{font-size:8px;letter-spacing:.3px;max-width:180px}.nav-actions{gap:2px}.icon-nav{width:43px;min-width:43px;height:43px}.hero{grid-template-columns:1fr;min-height:0}.hero-copy{padding:25px 21px 8px}.hero-copy h1{font-size:46px;margin:17px 0 12px}.hero-copy p{font-size:15px}.hero-art{min-height:280px;background-size:contain}.hero-stats{margin:19px 0 4px;grid-template-columns:repeat(3,1fr)}.stat{padding:9px 6px}.stat strong{font-size:17px}.stat span{font-size:10px}.mission-ribbon{grid-template-columns:repeat(2,1fr);padding:14px;gap:12px}.mission-ribbon span{font-size:12px}.section-head h2{font-size:26px}.case-grid{grid-template-columns:1fr}.case-thumb{height:200px}.play-shell{padding:13px}.subpaper{padding:12px}.story-art{min-height:0}.story-art img{max-height:280px}.logic{min-width:385px}.sidebar{gap:10px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
@@ -162,7 +202,7 @@ button:focus-visible, select:focus-visible{outline:3px solid #ffe19b;outline-off
       <div class="brand-mark"><img src="assets/icon-loupe.png" alt=""></div>
       <div>
         <strong>CASE FILES</strong>
-        <small>Illustrated English Mysteries · Logic Grids · Detective Desk Edition</small>
+        <small>ENGLISH MYSTERIES  ·  DETECTIVE DESK</small>
       </div>
     </div>
     <div class="nav-actions">
@@ -176,7 +216,7 @@ button:focus-visible, select:focus-visible{outline:3px solid #ffe19b;outline-off
       <div class="hero-copy">
         <div class="kicker">Detective's Desk · illustrated edition</div>
         <h1>Solve mysteries<br>with logic.</h1>
-        <p>A clearer, prettier version of CASE FILES: beautiful story illustrations, a warm detective atmosphere, readable deduction grids, and all the gameplay centred on checking clues and filling in ✓ / ✗ tables.</p>
+        <p>Open a dossier, follow the clues and solve each mystery. Your greatest tool is your reasoning.</p>
         <div class="hero-actions">
           <button class="btn" id="openFirstCase">Open Case 1</button>
           <button class="ghost" id="jumpToCases">Browse all cases</button>
@@ -187,25 +227,15 @@ button:focus-visible, select:focus-visible{outline:3px solid #ffe19b;outline-off
           <div class="stat"><strong>✓ ✗</strong><span>deduction first</span></div>
         </div>
       </div>
-      <div class="hero-art" aria-hidden="true"></div>
+      <div class="hero-art" role="img" aria-label="An animated-style detective and her dog investigate at a sunlit desk"></div>
     </div>
 
-    <div class="section-head">
-      <div>
-        <h2>What pupils do</h2>
-        <p>Simple progression: read, compare clues, deduce, check.</p>
-      </div>
-    </div>
-    <div class="home-grid">
-      <div class="feature"><h3><span class="emoji">📖</span>Read the story</h3><p>Each case now includes a large illustration to set the scene and make the mystery more inviting.</p></div>
-      <div class="feature"><h3><span class="emoji">🔎</span>Study the clues</h3><p>Clues stay central, displayed clearly on parchment-style panels with optional audio reading.</p></div>
-      <div class="feature"><h3><span class="emoji">🧩</span>Fill in the grids</h3><p>Interactive logic tables remain the heart of the game. Tap blank → ✓ → ✗ → blank.</p></div>
-    </div>
+    <div class="mission-ribbon" aria-label="How to play"><span><b>01</b> Read the case</span><span><b>02</b> Follow the clues</span><span><b>03</b> Complete both grids</span><span><b>04</b> Solve it</span></div>
 
     <div class="section-head" id="casesAnchor">
       <div>
         <h2>Case library</h2>
-        <p>Illustrated cards for the 15 logic puzzles.</p>
+        <p>Choose your next investigation. Every dossier has two deduction grids.</p>
       </div>
     </div>
     <div class="case-grid" id="caseGrid"></div>
@@ -226,7 +256,7 @@ button:focus-visible, select:focus-visible{outline:3px solid #ffe19b;outline-off
               <button class="mini-btn" id="listenClues">🔊 Read clues</button>
             </div>
           </div>
-          <div class="story-art"><img id="storyImage" src="assets/missing-necklace.png" alt="Story illustration"></div>
+          <div class="story-art"><img id="storyImage" src="assets/missing-necklace.webp" alt="Story illustration"></div>
         </div>
 
         <div class="subpaper">
@@ -267,17 +297,11 @@ button:focus-visible, select:focus-visible{outline:3px solid #ffe19b;outline-off
           <button id="nextBtn" class="btn" style="width:100%;margin-top:8px">Next case →</button>
         </div>
 
-        <div class="sidebar-card">
-          <h3>Story illustration</h3>
-          <p id="imageCaption"></p>
-          <span class="badge" id="caseBadge">Warm campus mystery</span>
-        </div>
-
       </aside>
     </div>
   </section>
 
-  <p class="footer-note">Illustrated Detective Desk update · playable logic grids preserved</p>
+  <p class="footer-note">CASE FILES  •  ENGLISH MYSTERIES FOR CURIOUS MINDS</p>
 </div>
 
 <script>
@@ -313,11 +337,11 @@ button:focus-visible, select:focus-visible{outline:3px solid #ffe19b;outline-off
     'Every case follows the same mission: compare the evidence, cross out impossible options, and identify one correct place and one correct time for each suspect.'
   ];
   const images = [
-    {src:'assets/missing-necklace.png', caption:'The detective examines the scene of the missing necklace.', badge:'Museum / jewel mystery'},
-    {src:'assets/library-secret.png', caption:'A library investigation brings clues hidden in books and quiet corners.', badge:'Library mystery'},
-    {src:'assets/garden-gate.png', caption:'The garden gate and footprints suggest a clue outdoors.', badge:'Garden clue'},
-    {src:'assets/gothic-manor.png', caption:'A darker, more atmospheric mystery for dramatic cases.', badge:'Gothic atmosphere'},
-    {src:'assets/home-hero.png', caption:'The main detective desk scene gives the game its warm visual identity.', badge:'Detective desk'}
+    {src:'assets/missing-necklace.webp', caption:'The detective examines the scene of the missing necklace.', badge:'Museum / jewel mystery'},
+    {src:'assets/library-secret.webp', caption:'A library investigation brings clues hidden in books and quiet corners.', badge:'Library mystery'},
+    {src:'assets/garden-gate.webp', caption:'The garden gate and footprints suggest a clue outdoors.', badge:'Garden clue'},
+    {src:'assets/gothic-manor.webp', caption:'A darker, more atmospheric mystery for dramatic cases.', badge:'Gothic atmosphere'},
+    {src:'assets/home-hero.webp', caption:'The main detective desk scene gives the game its warm visual identity.', badge:'Detective desk'}
   ];
   const people=['Emma','Liam','Noah'];
   const places=['Library','Garden','Art Room'];
@@ -408,8 +432,6 @@ button:focus-visible, select:focus-visible{outline:3px solid #ffe19b;outline-off
     $('clues').innerHTML = p.clues.map(clue => `<li>${clue}</li>`).join('');
     $('storyImage').src = p.image.src;
     $('storyImage').alt = p.title + ' illustration';
-    $('imageCaption').textContent = p.image.caption;
-    $('caseBadge').textContent = p.image.badge;
     renderGrid('gridA', gridA, places, 'a');
     renderGrid('gridB', gridB, times, 'b');
     updateProgress();
