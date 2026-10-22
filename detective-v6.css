@@ -1,0 +1,37 @@
+/* CASE FILES V6 — visual-only upgrade. Preserves the actual puzzle engine and every original case. */
+:root{--gold:#dbb978;--wood:#3c2415;--paper:#f5e6c5;--ink:#2c2016}
+body{background:radial-gradient(circle at 8% 5%,#bc844345,transparent 28%),radial-gradient(circle at 95% 26%,#a1653138,transparent 36%),repeating-linear-gradient(92deg,#1d120b 0 37px,#23160d 38px 41px,#1b110b 44px 78px)!important;color:#f7e9cc!important;padding:18px 12px 75px!important}
+.wrap{max-width:1060px!important}
+header{padding:18px 20px 12px!important;border-radius:20px;background:linear-gradient(135deg,#1d1916,#392518);border:1px solid #977243;box-shadow:0 14px 35px #0008;margin:12px 0 22px!important}
+header h1{font-size:clamp(1.7rem,5vw,3rem)!important;letter-spacing:.075em!important;color:#f0d19a!important;text-shadow:0 3px 8px #000a}
+header .subtitle{color:#e9d2a8!important;font-size:1rem}
+.hero{border:3px solid #aa804a!important;border-radius:16px!important;box-shadow:0 9px 32px #0009!important;background:#19110b!important}
+.hero img{display:block;width:100%!important;height:auto!important;object-fit:contain!important;max-height:none!important}
+.progress-bar-outer{margin:14px 0 22px!important;height:26px!important;border:1px solid #b18c55!important;background:#211b15!important}
+.progress-bar-inner{background:linear-gradient(90deg,#997134,#edd092)!important}
+.case-card{background:linear-gradient(125deg,#f8eccc,#e3c99b)!important;color:var(--ink)!important;border:2px solid #ae8950!important;border-radius:15px!important;padding:17px!important;box-shadow:0 8px 19px #0008!important;transition:transform .14s, box-shadow .14s!important}
+.case-card:hover{transform:translateY(-2px)!important;box-shadow:0 12px 24px #0009!important}
+.case-num{background:#4c3322!important;border:2px solid #bd9756!important;color:#f2d59c!important}
+.case-card.done .case-num{background:#275141!important;color:#e5f3e9!important}
+.case-title{color:#332315!important;font-weight:bold!important;font-size:1.12rem!important}
+.case-diff{color:#745433!important}
+.case-check{color:#256144!important}
+.back-btn,.a11y-toggle{border-radius:12px!important;min-height:44px!important;border:1px solid #c19d61!important;color:#f5e3c0!important;background:#27211b!important;padding:10px 16px!important}
+.a11y-panel{background:#282017!important;border:1px solid #bc9b63!important;border-radius:15px!important;box-shadow:0 15px 35px #000a!important}
+.case-file{border:3px solid #b18d59!important;background:linear-gradient(145deg,#fff2d5,#edd7ab)!important;color:#302113!important;border-radius:16px!important;padding:clamp(16px,4vw,26px)!important;box-shadow:0 11px 28px #0007!important;margin:15px 0!important}
+.case-file h2{color:#654323!important;border-bottom:1px solid #cba97b!important}
+.case-file p,.case-file li,.clues li span:last-child{color:#302113!important;line-height:1.7!important}
+.clue-num{background:#6f3925!important;color:#fff3d5!important}
+.grid-scroll{border:2px solid #a78552!important;background:#faefd6!important;border-radius:15px!important;padding:14px 8px!important;box-shadow:0 6px 18px #0004!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-inline:contain}
+table.puzzle{background:#fff5dc!important;border:2px solid #a88752!important}
+table.puzzle th{background:#e2c99e!important;color:#302414!important;border-color:#a98652!important}
+table.puzzle th.rowhead{background:#ead5ae!important;color:#302414!important;min-width:92px!important}
+table.puzzle td{border-color:#ba9d6d!important}
+table.puzzle td.cell{background:#fff9e9!important;color:#2d4d3f!important;width:48px!important;height:48px!important;min-width:48px!important;font-size:1.35em!important;touch-action:manipulation;-webkit-tap-highlight-color:#e1b66b80}
+table.puzzle td.cell:hover{background:#f7e3b9!important}
+table.puzzle td.blocked{background:#cfb99a!important}
+.controls button,.controls .action,button.action,button.secondary{border-radius:11px!important;min-height:46px!important;padding:11px 16px!important}
+button.action{background:linear-gradient(#33795e,#20523f)!important;color:#fff4d9!important;border:1px solid #b8aa79!important;box-shadow:0 4px 10px #0004!important}
+button.secondary{border:1px solid #b99864!important;color:#e8d0a2!important}
+button:focus-visible,.case-card:focus-visible,td.cell:focus-visible{outline:3px solid #df9e39!important;outline-offset:3px}
+@media(max-width:700px){body{padding:8px 7px 45px!important}.wrap{width:100%!important}header{padding:12px!important}.case-card{padding:12px!important;gap:12px!important}.case-num{width:38px!important;height:38px!important;line-height:34px!important}.case-file{padding:14px!important}.grid-scroll{padding:8px 5px!important}table.puzzle td.cell{min-width:44px!important;width:44px!important;height:44px!important}.controls{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}.controls button{width:100%!important}.a11y-toggle{position:relative!important;top:auto!important;right:auto!important;margin-left:auto!important}.a11y-panel{top:54px!important;right:8px!important;max-width:calc(100vw - 16px)!important}}
