@@ -204,6 +204,27 @@ body{background:radial-gradient(ellipse at 12% -5%,#70503460,transparent 40%),li
 .music-toggle[aria-pressed="true"]{border-color:#e4c78b;background:linear-gradient(145deg,#294b3b,#152a23)}
 .music-toggle .music-icon{font-size:20px;line-height:1}
 @media(max-width:680px){.music-toggle{min-width:48px;width:48px;height:48px;padding:4px;font-size:0;gap:0}.music-toggle .music-icon{font-size:23px}}
+
+/* V16 navigation: a cohesive, compact detective desk control panel */
+.header{gap:16px}
+.nav-actions{display:flex;align-items:center;justify-content:center;gap:4px;padding:6px 9px;border:1px solid rgba(226,184,111,.35);border-radius:20px;background:linear-gradient(145deg,rgba(90,59,34,.36),rgba(29,24,20,.8));box-shadow:inset 0 1px 0 #fff2cf18;flex-wrap:nowrap}
+.nav-actions .icon-nav{width:98px;height:88px;min-width:98px;padding:3px 5px;display:grid;place-items:center;overflow:hidden;flex-shrink:0}
+.nav-actions .icon-nav img{width:100%;height:100%;object-fit:contain;object-position:center;display:block}
+.nav-actions .music-toggle{margin-left:7px;flex-shrink:0}
+@media(max-width:760px){
+ .header{gap:8px;flex-wrap:wrap}
+ .brand{flex:1 1 170px;min-width:0}
+ .nav-actions{gap:1px;padding:4px 5px;border-radius:14px;margin-left:auto}
+ .nav-actions .icon-nav{width:69px;height:66px;min-width:69px;padding:2px}
+ .nav-actions .music-toggle{margin-left:3px;min-width:44px;width:44px;height:44px}
+}
+@media(max-width:420px){
+ .header{padding:8px;gap:5px}
+ .brand{flex:1 1 140px}
+ .brand small{display:none}
+ .nav-actions .icon-nav{width:58px;min-width:58px;height:58px}
+ .nav-actions .music-toggle{width:40px;height:40px;min-width:40px}
+}
 </style>
 </head>
 <body>
